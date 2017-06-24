@@ -11,6 +11,7 @@ import UIKit
 class GameViewController: UIViewController {
     
     fileprivate let controller:GameController
+    var passedValue = "нет данных"
     
     required init?(coder aDecoder: NSCoder) {
         controller = GameController()
@@ -55,15 +56,15 @@ class GameViewController: UIViewController {
                                                 preferredStyle:UIAlertControllerStyle.alert)
         
         //2 set up the menu actions
-        let easy = UIAlertAction(title: "Easy-peasy", style:.default,
+        let easy = UIAlertAction(title: "Легкая", style:.default,
                                  handler: {(alert:UIAlertAction!) in
                                     self.showLevel(1)
         })
-        let hard = UIAlertAction(title: "Challenge accepted", style:.default,
+        let hard = UIAlertAction(title: "Средний уровень", style:.default,
                                  handler: {(alert:UIAlertAction!) in
                                     self.showLevel(2)
         })
-        let hardest = UIAlertAction(title: "I'm totally hard-core", style: .default,
+        let hardest = UIAlertAction(title: "Жесть", style: .default,
                                     handler: {(alert:UIAlertAction!) in
                                         self.showLevel(3)
         })

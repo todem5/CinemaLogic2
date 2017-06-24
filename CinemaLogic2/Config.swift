@@ -21,8 +21,8 @@ func randomNumber(minX:UInt32, maxX:UInt32) -> Int {
 
 let TileMargin: CGFloat = 20.0
 
-let FontHUD = UIFont(name:"comic andy", size: 62.0)!
-let FontHUDBig = UIFont(name:"comic andy", size:120.0)!
+let FontHUD = UIFont(name:"Arial", size: 60.0)!
+let FontHUDBig = UIFont(name:"Arial", size: 100.0)!
 
 // Sound effects
 let SoundDing = "ding.mp3"

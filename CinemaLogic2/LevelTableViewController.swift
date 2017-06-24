@@ -10,7 +10,7 @@ import UIKit
 
 class LevelTableViewController: UITableViewController {
 
-    var passedValue = "нет данных"
+    var passedValue: String=""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,17 +29,18 @@ class LevelTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // В GameViewController задано 3 вида сложности 1,2,3
-        if passedValue == "Игра" {return 3}
-        else {return 2}
+        //if passedValue == "Игра" {return 3}
+        //else {return 2}
+        return 3
     }
 
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        if passedValue == "Игра" {
+        //if passedValue == "Игра" {
             cell.textLabel?.text = Level(levelNumber: indexPath.row+1).name
             cell.detailTextLabel?.text = Level(levelNumber: indexPath.row+1).descript
-        }
+        //}
         return cell
     }
 }

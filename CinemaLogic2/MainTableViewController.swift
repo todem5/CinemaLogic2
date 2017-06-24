@@ -13,8 +13,9 @@ class MainTableViewController: UITableViewController {
     var menus = [Menu]()
     var selectedCellIndexPath: IndexPath?
     let selectedCellHeight: CGFloat = 70.0
-    let unselectedCellHeight: CGFloat = 67.0
+    let unselectedCellHeight: CGFloat = 70.0
     let textField: String = "Другие разделы"
+    var valuetopass: String = ""
     
     func loadMenu() {
         let label01 = UIImage(named: "01")!
@@ -126,14 +127,27 @@ class MainTableViewController: UITableViewController {
         
     }
     
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+            print("You selected cell #\(indexPath.row)")
+            //Get cell Label
+            let indexPath = tableView.indexPathForSelectedRow!
+            let currentCell = tableView.cellForRow(at: indexPath)! as! MainTableViewCell
+            if (currentCell.nameLabel.text! == "Игра") {
+                valuetopass = currentCell.nameLabel.text!
+                performSegue(withIdentifier: "Select", sender: self)}
+            }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "Select") {
-            if let indexPath = self.tableView.indexPathForSelectedRow {
-                let viewController = segue.destination as! LevelTableViewController
-                //menu Game
-                if (indexPath.row == 0 && indexPath.section == 0) {
-                    viewController.passedValue = self.menus[indexPath.row].name
+        if let indexPath = self.tableView.indexPathForSelectedRow {
+            if (indexPath.row == 0 && indexPath.section == 0) {
+                if (segue.identifier == "Select") {
+                    let viewContr1 = segue.destination as! GameViewController
+                    viewContr1.passedValue = self.menus[indexPath.row].name
                 }
+            }
+            if (indexPath.row == 1 && indexPath.section == 0) {
+                let viewContr2 = segue.destination as! LevelTableViewController
+                    viewContr2.passedValue = self.menus[indexPath.row].name
             }
         }
     }
